@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard | Xavier University Band</title>
+  <link rel="stylesheet" href="members.css" />
+</head>
+<body>
+
+  <div class="dashboard">
+    
+    <aside class="sidebar">
+      <h2 class="logo">Xavier University Band</h2>
+      <nav>
+        <ul>
+          <li class="active" data-tab="updates">Updates</li>
+          <li data-tab="scholarship">Scholarship</li>
+          <li data-tab="profile">Profile</li>
+          <li data-tab="signout">Sign Out</li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+        <h1>Welcome! [   Name  ]</h1>
+        <h4>[Instrument]</h4>
+      <section class="tab active" id="updates">
+        <h2>Updates</h2>
+        <p>Updates will be displayed here.</p>
+      </section>
+
+      <section class="tab" id="scholarship">
+        <h2>Scholarship</h2>
+        <p>Scholarship information and updates will be displayed here.</p>
+      </section>
+
+      <section class="tab" id="profile">
+        <h2>Profile</h2>
+        <form action="update_profile.php" method="post">
+          <input type="text" name="name" placeholder="Full Name" required />
+          <input type="email" name="email" placeholder="Email" required />
+          <input type="text" name="instrument" placeholder="Instrument" required/>
+          <input type="password" name="password" placeholder="New Password" required />
+          <button type="submit">Update Profile</button>
+      </section>
+
+      <section class="tab" id="signout">
+        <h2>Sign Out</h2>
+        <p>Are you sure you want to sign out?</p>
+        <button onclick="window.location.href='index.html'">Confirm</button>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll('.sidebar li');
+    const sections = document.querySelectorAll('.tab');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        sections.forEach(s => s.classList.remove('active'));
+        
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
